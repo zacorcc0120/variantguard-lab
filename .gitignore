@@ -1,0 +1,29 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# local run logs
+server.log
+*.log
+
+.DS_Store
+.env
+.env.*
+
+# Internal research and coordination records (kept locally)
+/CUSTOMER_LEADS_002.md
+/RESEARCH.md
+/OSS_AUDIT.md
+/OSS_INTEGRATION_REPORT.md
+/I18N_IMPLEMENTATION_REPORT.md
+/VARIANTGUARD_COMPETITIVE_VALIDATION.md
+/shopify-woocommerce-product-data-pain-points-2025-2026.md
+/docs/CURSOR_ACCEPTANCE.md
+/docs/CURSOR_ACCEPTANCE_REPORT.md
+/docs/PUBLICATION_CHECKLIST.md
+/docs/screenshots/
+/.release/

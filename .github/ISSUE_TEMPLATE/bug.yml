@@ -1,0 +1,22 @@
+name: Bug report
+description: A wrong finding, a missed row, or a broken local flow
+labels: []
+body:
+  - type: textarea
+    attributes:
+      label: What happened
+      description: Name the rule id if there is one. Say which file (baseline or proposed) and the physical line.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Synthetic rows
+      description: Paste a few made-up CSV rows that show the problem. Do not include a real store export.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Language
+      description: English or 中文, and whether a refresh kept that choice.
+    validations:
+      required: false

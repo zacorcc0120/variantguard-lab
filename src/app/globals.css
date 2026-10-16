@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', SFMono-Regular, 'Cascadia Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  --color-ink-50: #f7f8f9;
+  --color-ink-100: #eef0f2;
+  --color-ink-200: #dfe3e8;
+  --color-ink-300: #c6ccd4;
+  --color-ink-400: #8b95a3;
+  --color-ink-500: #626d7c;
+  --color-ink-600: #47515f;
+  --color-ink-700: #333b47;
+  --color-ink-800: #1f2530;
+  --color-ink-900: #14181f;
+  --color-ink-950: #0b0e13;
+
+  --color-accent-400: #7c9cff;
+  --color-accent-500: #4f74f0;
+  --color-accent-600: #3c5cd4;
+
+  --color-sev-high-bg: #fdf2f2;
+  --color-sev-high-fg: #b42318;
+  --color-sev-high-br: #fecdca;
+  --color-sev-high-solid: #d92d20;
+
+  --color-sev-med-bg: #fffaeb;
+  --color-sev-med-fg: #b54708;
+  --color-sev-med-br: #fedf89;
+  --color-sev-med-solid: #f79009;
+
+  --color-sev-low-bg: #f2f4f7;
+  --color-sev-low-fg: #475467;
+  --color-sev-low-br: #e4e7ec;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/*
+ * CJK glyphs need a different font stack, and the existing Latin-only stack
+ * falls back per-glyph, which produces visibly uneven baselines and line
+ * heights when a run mixes handles with Chinese prose.
+ */
+html[data-vg-locale='zh-CN'] {
+  --font-sans:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC',
+    'Noto Sans CJK SC', system-ui, sans-serif;
+}
+
+/*
+ * Boot gate. The bootstrap script sets data-vg-pending only when the visitor's
+ * locale is not the server-rendered one; the provider clears it in a layout
+ * effect, i.e. before the browser paints. The result is that a Chinese visitor
+ * sees the first frame in Chinese rather than a flash of English — and an
+ * English visitor never sees the gate at all, so the common path is unchanged.
+ */
+html[data-vg-pending] body {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-vg-locale='zh-CN'] {
+    /* CJK needs a touch more leading than the Latin scale provides. */
+    --leading-normal: 1.7;
+  }
+}
+
+body {
+  background: var(--color-ink-50);
+  color: var(--color-ink-800);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Dense, engineering-tool scrollbars rather than the default floating ones. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-300) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-ink-300);
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-400);
+  background-clip: content-box;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 1px;
+  border-radius: 3px;
+}
+
+/* Wrapping is required: every value in a report is user-supplied text and must
+   never be clipped or forced onto a single line. */
+.wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
