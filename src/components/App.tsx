@@ -164,12 +164,6 @@ export default function App() {
 
         {ready && result && (
           <>
-            <AssumptionPanel
-              value={assumptions}
-              onChange={setAssumptions}
-              sensitiveCount={result.summary.assumptionSensitive}
-            />
-
             {teach && (
               <div className="rounded-lg border border-accent-400/60 bg-accent-400/5 px-3 py-2.5">
                 <div className="text-[10.5px] font-semibold uppercase tracking-wide text-accent-600">
@@ -185,6 +179,14 @@ export default function App() {
                 baseline: baseline!.file.name,
                 proposed: proposed!.file.name,
               }}
+            />
+
+            {/* Methodology, not the conclusion: it sits under the report and
+                folds to one line, so the finding is what the eye lands on. */}
+            <AssumptionPanel
+              value={assumptions}
+              onChange={setAssumptions}
+              sensitiveCount={result.summary.assumptionSensitive}
             />
           </>
         )}

@@ -67,6 +67,17 @@ export const UI: Readonly<Record<string, string>> = {
   'assumptions.sensitiveOne': '{count} finding rests on a non-official assumption',
   // params: {count}
   'assumptions.sensitiveMany': '{count} findings rest on a non-official assumption',
+  // The panel folds to one line by default: most runs need the finding, not the
+  // methodology. How many assumptions lack official documentation is a property
+  // of the ruleset, not of this run, so it is safe to state up front.
+  // params: {count}
+  'assumptions.summaryCount': '{count} total',
+  // params: {count}
+  'assumptions.summaryUnofficial': '{count} not officially documented',
+  'assumptions.summaryNone': 'no finding here rests on one of them',
+  'assumptions.expand': 'Show',
+  'assumptions.collapse': 'Hide',
+  'assumptions.toggleLabel': 'Show or hide the detection assumptions',
   'assumptions.turnedOff': 'Turned off.',
   'assumptions.evidenceLabel': 'Unofficial translation of the source text above.',
 

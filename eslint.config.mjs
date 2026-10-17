@@ -29,6 +29,9 @@ export default ts.config(
       // Maintenance scripts report their results on stdout; that IS their
       // output, so the no-console rule does not apply to them.
       'scripts/**',
+      // Design-explorer mockups vendor a minified Alpine build. It is not our
+      // code and does not satisfy our lint rules.
+      'design/**/vendor/**',
     ],
   },
   js.configs.recommended,
